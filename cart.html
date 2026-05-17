@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="section">
+
+<h2 class="section-title">
+Your Luxury Cart
+</h2>
+
+{% for item in items %}
+
+<div style="
+background:white;
+width:350px;
+margin:20px auto;
+padding:25px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+">
+
+<h3>{{item.name}}</h3>
+
+<div class="price">
+{{item.price}}$
+</div>
+
+</div>
+
+{% endfor %}
+
+<h2 style="margin-top:40px;">
+TOTAL:
+<span class="gold">
+{{total}}$
+</span>
+</h2>
+
+<form action="/checkout" method="POST">
+
+<button class="btn">
+CHECKOUT
+</button>
+
+</form>
+
+<br>
+
+<a href="/clear" class="btn">
+CLEAR CART
+</a>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="section">
+
+<h2 class="section-title">
+Orders Dashboard
+</h2>
+
+{% for order in orders %}
+
+<div style="
+background:white;
+padding:30px;
+border-radius:25px;
+margin:20px auto;
+width:450px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+text-align:left;
+">
+
+<h3 class="gold">
+Order
+</h3>
+
+<p>
+Date:
+{{order.date}}
+</p>
+
+<p>
+Total:
+<span class="gold">
+{{order.total}}$
+</span>
+</p>
+
+</div>
+
+{% endfor %}
+
+</section>
+
+{% endblock %}
