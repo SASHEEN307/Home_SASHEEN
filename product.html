@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0b0b0b;
+color:#d4af37;
+text-align:center;
+}
+
+.container{
+padding:30px;
+}
+
+img{
+width:300px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(212,175,55,0.3);
+}
+
+button{
+background:#d4af37;
+color:#000;
+border:none;
+padding:12px 20px;
+margin-top:20px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1 id="name"></h1>
+<img id="img">
+<h2 id="price"></h2>
+
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<script>
+let params = new URLSearchParams(window.location.search);
+
+let name = params.get("name");
+let price = params.get("price");
+let img = params.get("img");
+
+document.getElementById("name").innerText = name;
+document.getElementById("price").innerText = "$" + price;
+document.getElementById("img").src = img;
+
+/* cart */
+function addToCart(){
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push({name, price});
+localStorage.setItem("cart", JSON.stringify(cart));
+alert("Added to cart ✨");
+}
+</script>
+
+</body>
+</html>
